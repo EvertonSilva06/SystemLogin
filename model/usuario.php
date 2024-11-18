@@ -22,10 +22,8 @@ class Usuario{
         return $resultado->fetch_all(MSQLI_ASSOC);
     }
 
-    public function cadastrar()
-    {
-        $query = "INSERT INTO {$this->table} (nome, dataNasc, email, senha, endereco ) values ('{$this->nome}','{$this->dataNasc}', '{$this->email}','{$this->senha}','{$this->endereco}');";
-        return $this->conexao->query($query);
+    public function cadastrar() {
+        return "INSERT INTO {$this->table} (nome, dataNasc, email, senha, endereco) VALUES (?, ?, ?, ?, ?);";
     }
 
 
@@ -46,9 +44,5 @@ class Usuario{
         }
         return false;
     }
-    public function __destruct() {
-        if ($this->conexao) {
-            $this->conexao->close();
-        }
-    }
+ 
 }
