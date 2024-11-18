@@ -10,7 +10,7 @@
         <h2>Cadastrar Usuario</h2>
         <form action="../service/cadastrar.php?acao=cadastrar" method="post">
     
-            <label for="nome">Nome</label>x
+            <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome" required>
             <br><br>
             
@@ -26,7 +26,7 @@
             <input type="password" name="senha" id="senha" required>
             <br><br>
             
-            <label for="endereco">Endereco</label>
+            <label for="endereco">Endereço</label>
             <input type="text" name="endereco" id="endereco" required>
             <br><br>
             

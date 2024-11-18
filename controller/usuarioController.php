@@ -1,26 +1,25 @@
 <?php
+require "../../model/usuario.php";
+require "../../config/database.php";
 
-require_once '../config/database.php';
-require_once '../model/usuario.php';
+class usuarioController{
+    public $usuario;
+    public $conexao;
 
-class usuarioController {
-    public function cadastrar($nome, $dataNasc ,$email, $senha, $endereco) {
-        $database = new Banco();
-        $bd = $database->conectar();
+    public function conectarBd() {
+        $this->conexao = (new bd())->conectar();
+        return $this->conexao;
+    }
 
-        $usuario = new Usuario($bd);
-        $usuario->nome = $nome;
-        $usuario->dataNasc = $dataNasc;
-        $usuario->email = $email;
-        $usuario->senha = password_hash($senha, PASSWORD_DEFAULT); // Hash da senha
-        $usuario->endereco = $endereco;
+    public function cadastrar($nome, $dataNasc, $email, $senha, $endereco) {
+        $usuario = new Usuario($this->conectarBd());
+        $query = $usuario->cadastrar();
 
-        if ($usuario->cadastrar()) {
-            $bd->close();
-             header('Location:../index.php');
-            exit; 
-        } else {
-            echo "Erro ao cadastrar usuario";
-        } 
+        $stmt = $this->conexao->prepare($query);
+        $senhahash = password_hash($senha, PASSWORD_BCRYPT);
+        $stmt->bind_param("sssss", $nome, $dataNasc, $email, $senhahash, $endereco);
+        $stmt->execute();
+
+        $this->conexao->close();
     }
 }
