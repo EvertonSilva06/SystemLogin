@@ -16,5 +16,5 @@ switch($acao)
         break;
     
     default:
-        include '../view/formCadastro.php';
+        include './view/formCadastro.php';
 }

@@ -25,11 +25,13 @@ class LoginController {
         if ($resultado->num_rows == 0) {
             // Usuário não encontrado, redireciona para a página de cadastro
             $_SESSION['erro_login'] = "Usuário não encontrado. Faça seu cadastro.";
-            header("Location: ../formCadastro.php");
+            
+            header("Location: ../view/formCadastro.php");
             $stmt->close();
             exit();
         }
 
+        
         // Obtém os dados do usuário
         $usuario = $resultado->fetch_assoc();
         $stmt->close();
