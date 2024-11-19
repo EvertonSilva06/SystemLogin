@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-
+    <link rel="stylesheet" href="./view/css/style.css">
 </head>
 <body>
-    <h2>Login</h2>
-    <form action="/systemLogin/service/login.php?acao=login" method="post">
-        
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email">
-        <br><br>
+    <div class="wrapper">  
+        <div class="form-wrapper">
+            <form action="/systemLogin/service/login.php?acao=login" method="post">
+                <h2>Login</h2>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email">
+                        <br><br>
+                    </div>
+                    <div class="input-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" name="senha" id="senha">
+                        <br><br>
+                    </div>
+                    <input type="submit" value="Fazer login">
 
-        <label for="senha">senha</label>
-        <input type="password" name="senha" id="senha">
-        <br><br>
-
-        <input type="submit" value="Fazer login">
-
-        <p>não possui cadastro?</p>
-        <ul> 
-            <li><a href="/systemLogin/view/formCadastro.php">Clique Aqui!</a></li>
-        </ul>
-    </form>
+                    <p>Não possui cadastro?</p>
+                    <a href="/systemLogin/view/formCadastro.php">Clique Aqui!</a>
+                    
+            </form>
+        </div>
+    </div>
 </body>
