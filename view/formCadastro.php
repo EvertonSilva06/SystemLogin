@@ -34,6 +34,10 @@
             
             
                 <input type="submit" value="Cadastrar Usuario">
+
+
+                <p>Já possui cadastro?</p>
+                    <a href="../index.php">Clique Aqui!</a>
             </form>
         </div>
     </div>
